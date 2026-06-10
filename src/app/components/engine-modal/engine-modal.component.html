@@ -1,0 +1,63 @@
+<div *ngIf="engine && meta" class="modal-backdrop" (click)="onBackdropClick($event)">
+  <div
+    class="modal-panel"
+    [class.sport-modal]="isSport"
+    [style.--gen-color]="meta.color"
+    [style.--gen-accent]="meta.accentColor"
+  >
+    <div class="modal-stripe" [style.background]="isSport ? 'linear-gradient(90deg, #b8922a, #c8a84b, #b8922a)' : meta.color"></div>
+
+    <header class="modal-header">
+      <div class="modal-title-block">
+        <div class="modal-code-row">
+          <span class="modal-code">{{ engine.code }}</span>
+          <span class="modal-gen-badge" [class.sport-badge]="isSport">{{ engine.generation }}-Generation</span>
+          <span *ngIf="isSport" class="modal-motorsport-tag">MOTORSPORT</span>
+        </div>
+        <h2 class="modal-title">{{ engine.name }}</h2>
+        <p class="modal-years">Bauzeitraum: {{ engine.years }}</p>
+      </div>
+      <button class="close-btn" (click)="close.emit()">✕</button>
+    </header>
+
+    <div class="modal-body">
+      <div class="modal-left">
+        <section class="modal-section">
+          <h4 class="section-heading">Technische Daten</h4>
+          <table class="spec-table">
+            <tbody>
+              <tr *ngFor="let row of specRows(engine.specs)">
+                <td class="spec-label">{{ row.label }}</td>
+                <td class="spec-val">{{ row.value }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+
+      <div class="modal-right">
+        <section class="modal-section">
+          <h4 class="section-heading">Beschreibung</h4>
+          <p class="description-text">{{ engine.description }}</p>
+        </section>
+
+        <section class="modal-section">
+          <h4 class="section-heading">Highlights</h4>
+          <ul class="highlights-list">
+            <li *ngFor="let h of engine.highlights">
+              <span class="highlight-dot" [style.background]="meta.accentColor"></span>
+              {{ h }}
+            </li>
+          </ul>
+        </section>
+
+        <section class="modal-section">
+          <h4 class="section-heading">Fahrzeugverwendung</h4>
+          <div class="applications-grid">
+            <span *ngFor="let app of engine.applications" class="app-tag">{{ app }}</span>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

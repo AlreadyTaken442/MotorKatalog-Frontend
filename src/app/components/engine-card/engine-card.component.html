@@ -1,0 +1,51 @@
+<article
+  class="engine-card"
+  [class.sport]="isSport"
+  [style.--gen-color]="meta.color"
+  [style.--gen-accent]="meta.accentColor"
+  (click)="openDetail.emit(engine)"
+>
+  <div class="card-stripe" [style.background]="isSport ? 'linear-gradient(90deg, #b8922a, #c8a84b)' : meta.color"></div>
+
+  <div class="card-header">
+    <span class="engine-code">{{ engine.code }}</span>
+    <span class="gen-pill" [class.sport-pill]="isSport">{{ engine.generation }}</span>
+  </div>
+
+  <div class="card-body">
+    <h3 class="engine-name">{{ engine.name }}</h3>
+    <p class="engine-years">{{ engine.years }}</p>
+
+    <div class="spec-grid">
+      <div class="spec-item" *ngIf="engine.specs.powerHp">
+        <span class="spec-value">{{ engine.specs.powerHp }}</span>
+        <span class="spec-unit">PS</span>
+      </div>
+      <div class="spec-item" *ngIf="engine.specs.torqueNm">
+        <span class="spec-value">{{ engine.specs.torqueNm }}</span>
+        <span class="spec-unit">Nm</span>
+      </div>
+      <div class="spec-item" *ngIf="engine.specs.displacement">
+        <span class="spec-value">{{ (engine.specs.displacement / 1000).toFixed(1) }}</span>
+        <span class="spec-unit">L</span>
+      </div>
+      <div class="spec-item" *ngIf="engine.specs.cylinders">
+        <span class="spec-value">{{ engine.specs.cylinders }}</span>
+        <span class="spec-unit">Zyl.</span>
+      </div>
+    </div>
+
+    <div class="card-tags">
+      <span class="tag fuel-tag">{{ engine.specs.fuelType }}</span>
+      <span class="tag" *ngIf="engine.specs.turbo && engine.specs.turbo !== 'Saugmotor'">Turbo</span>
+      <span class="tag" *ngIf="engine.specs.turbo === 'Saugmotor'">Saugmotor</span>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <span class="applications-hint">{{ engine.applications.length }} Anwendungen</span>
+    <span class="detail-hint">Details →</span>
+  </div>
+
+  <div *ngIf="isSport" class="sport-glow"></div>
+</article>

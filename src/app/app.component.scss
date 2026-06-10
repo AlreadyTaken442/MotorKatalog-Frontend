@@ -1,0 +1,241 @@
+.app-shell {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #e8e8e8;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Top Bar ─────────────────────────────────────────────────────────────── */
+.top-bar {
+  background: #0f0f11;
+  border-bottom: 1px solid #1e1e20;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo-image {
+  width: 36px;
+  height: 36px;
+}
+
+.top-bar-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 28px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.logo-block {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.bmw-roundel {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #1c6ec8 0deg 90deg,
+    #fff 90deg 180deg,
+    #1c6ec8 180deg 270deg,
+    #fff 270deg 360deg
+  );
+  border: 2px solid #3a3a3c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  span { display: none; }
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.logo-main {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #e8e8e8;
+}
+
+.logo-sub {
+  font-size: 0.62rem;
+  color: #4a4a52;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.search-block {
+  flex: 1;
+  max-width: 420px;
+}
+
+.search-input {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid #2a2a2c;
+  border-radius: 8px;
+  padding: 8px 14px;
+  color: #d0d0d8;
+  font-size: 0.82rem;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.02em;
+  transition: border-color 0.2s, background 0.2s;
+  box-sizing: border-box;
+
+  &::placeholder { color: #3a3a44; }
+  &:focus {
+    outline: none;
+    border-color: #5a5a7a;
+    background: rgba(255,255,255,0.06);
+  }
+}
+
+.engine-count {
+  margin-left: auto;
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.count-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #e0e0e8;
+  line-height: 1;
+}
+
+.count-label {
+  font-size: 0.65rem;
+  color: #4a4a52;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── Tabs Bar ─────────────────────────────────────────────────────────────── */
+.tabs-bar {
+  background: #0f0f11;
+  border-bottom: 1px solid #1e1e20;
+  padding: 0 28px;
+  max-width: 100%;
+  app-generation-tabs { display: block; max-width: 1400px; margin: 0 auto; }
+}
+
+/* ── Generation Context ───────────────────────────────────────────────────── */
+.gen-context {
+  background: linear-gradient(180deg, rgba(255,255,255,0.025) 0%, transparent 100%);
+  border-bottom: 1px solid #1a1a1c;
+  padding: 20px 28px;
+}
+
+.gen-context.sport-context {
+  background: linear-gradient(180deg, rgba(200,168,75,0.06) 0%, transparent 100%);
+  border-bottom-color: rgba(200,168,75,0.1);
+}
+
+.gen-context-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.gen-context-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gen-accent);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.gen-context-desc {
+  font-size: 0.8rem;
+  color: #5a5a6a;
+  margin: 0;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+.gen-context-right {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.gen-context-count {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--gen-accent);
+  line-height: 1;
+}
+
+.gen-context-unit {
+  font-size: 0.7rem;
+  color: #4a4a52;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── Engine Grid ─────────────────────────────────────────────────────────── */
+.engine-grid-wrapper {
+  flex: 1;
+  padding: 28px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.engine-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+/* ── Empty State ─────────────────────────────────────────────────────────── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  color: #3a3a44;
+  text-align: center;
+  gap: 8px;
+
+  .empty-icon { font-size: 2.5rem; opacity: 0.3; }
+  p { font-size: 0.9rem; margin: 0; }
+  small { font-size: 0.75rem; opacity: 0.6; }
+}
+
+/* ── Sport Active Global ─────────────────────────────────────────────────── */
+.sport-active .search-input:focus { border-color: rgba(200,168,75,0.5); }
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .top-bar-inner { padding: 0 16px; gap: 12px; }
+  .logo-sub, .engine-count { display: none; }
+  .tabs-bar { padding: 0 16px; }
+  .engine-grid-wrapper { padding: 16px; }
+  .gen-context { padding: 16px; }
+}

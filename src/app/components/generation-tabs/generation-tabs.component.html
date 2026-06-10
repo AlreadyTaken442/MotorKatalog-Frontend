@@ -1,0 +1,20 @@
+<nav class="gen-tabs">
+  <button
+    *ngFor="let gen of generations"
+    class="gen-tab"
+    [class.active]="activeGeneration === gen.id"
+    [class.sport]="gen.isSport"
+    [style.--gen-color]="gen.color"
+    [style.--gen-accent]="gen.accentColor"
+    (click)="select(gen.id)"
+  >
+    <span class="gen-badge" [class.sport-badge]="gen.isSport">
+      {{ gen.id }}
+    </span>
+    <span class="gen-info">
+      <span class="gen-label">{{ gen.label }}</span>
+      <span class="gen-era">{{ gen.era }}</span>
+    </span>
+    <span *ngIf="gen.isSport" class="motorsport-tag">MOTORSPORT</span>
+  </button>
+</nav>

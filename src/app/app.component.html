@@ -1,0 +1,84 @@
+<div class="app-shell" [class.sport-active]="activeGeneration === 'S'">
+
+  <!-- ── Top Bar ─────────────────────────────────────────────────────────── -->
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <div class="logo-block">
+        <!-- <div class="bmw-roundel">
+          <span>BMW</span>
+        </div> -->
+        <img src="assets/logo.svg" alt="Logo" class="logo-image" />
+        <div class="logo-text">
+          <span class="logo-main">Motoren</span>
+          <span class="logo-sub">Technische Datenbank</span>
+        </div>
+      </div>
+      <div class="search-block">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Suchen — Code, Name, Modell …"
+          [value]="searchQuery"
+          (input)="onSearch($any($event.target).value)"
+        />
+      </div>
+      <div class="engine-count">
+        <span class="count-num">{{ allEngines.length }}</span>
+        <span class="count-label">Triebwerke</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Generation Tabs ───────────────────────────────────────────────── -->
+  <div class="tabs-bar">
+    <app-generation-tabs
+      [activeGeneration]="activeGeneration"
+      (generationChange)="onGenerationChange($event)"
+    ></app-generation-tabs>
+  </div>
+
+  <!-- ── Generation Context Header ─────────────────────────────────────── -->
+  <div
+    class="gen-context"
+    [class.sport-context]="currentMeta.isSport"
+    [style.--gen-color]="currentMeta.color"
+    [style.--gen-accent]="currentMeta.accentColor"
+  >
+    <div class="gen-context-inner">
+      <div class="gen-context-left">
+        <span class="gen-context-label">{{ currentMeta.label }}</span>
+        <p class="gen-context-desc">{{ currentMeta.description }}</p>
+      </div>
+      <div class="gen-context-right">
+        <span class="gen-context-count">{{ countByGeneration(activeGeneration) }}</span>
+        <span class="gen-context-unit">Motoren</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Engine Grid ────────────────────────────────────────────────────── -->
+  <main class="engine-grid-wrapper">
+    <div class="engine-grid" *ngIf="filteredEngines.length > 0; else emptyState">
+      <app-engine-card
+        *ngFor="let engine of filteredEngines; trackBy: trackById"
+        [engine]="engine"
+        (openDetail)="openEngine($event)"
+      ></app-engine-card>
+    </div>
+
+    <ng-template #emptyState>
+      <div class="empty-state">
+        <span class="empty-icon">⚙</span>
+        <p>Keine Motoren gefunden</p>
+        <small>Suchbegriff anpassen oder andere Generation wählen</small>
+      </div>
+    </ng-template>
+  </main>
+
+  <!-- ── Engine Detail Modal ────────────────────────────────────────────── -->
+  <app-engine-modal
+    [engine]="selectedEngine"
+    (close)="closeModal()"
+  ></app-engine-modal>
+
+</div>

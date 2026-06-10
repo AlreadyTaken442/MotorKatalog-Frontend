@@ -1,0 +1,101 @@
+.gen-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid #2a2a2c;
+  overflow-x: auto;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+.gen-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  color: #6c6c6e;
+
+  &:hover {
+    color: #c8c8cc;
+    background: rgba(255,255,255,0.03);
+    .gen-badge { border-color: var(--gen-accent); }
+  }
+
+  &.active {
+    color: #e8e8e8;
+    border-bottom-color: var(--gen-accent);
+    background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, transparent 100%);
+
+    .gen-badge {
+      background: var(--gen-color);
+      border-color: var(--gen-accent);
+      color: #fff;
+    }
+
+    .gen-label { color: var(--gen-accent); }
+  }
+
+  &.sport {
+    .gen-badge { box-shadow: none; }
+    &.active .gen-badge {
+      background: linear-gradient(135deg, #b8922a, #c8a84b);
+      box-shadow: 0 0 12px rgba(200, 168, 75, 0.4);
+    }
+  }
+}
+
+.gen-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid #3a3a3c;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.gen-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+}
+
+.gen-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.gen-era {
+  font-size: 0.68rem;
+  color: #4a4a50;
+  letter-spacing: 0.04em;
+}
+
+.motorsport-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #c8a84b;
+  background: rgba(200, 168, 75, 0.12);
+  border: 1px solid rgba(200, 168, 75, 0.25);
+  border-radius: 3px;
+  padding: 2px 6px;
+}
