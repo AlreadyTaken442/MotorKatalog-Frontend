@@ -10,12 +10,12 @@
     <header class="modal-header">
       <div class="modal-title-block">
         <div class="modal-code-row">
-          <span class="modal-code">{{ engine.code }}</span>
+          <span class="modal-code">{{ engine.enginecode }}</span>
           <span class="modal-gen-badge" [class.sport-badge]="isSport">{{ engine.generation }}-Generation</span>
           <span *ngIf="isSport" class="modal-motorsport-tag">MOTORSPORT</span>
         </div>
-        <h2 class="modal-title">{{ engine.name }}</h2>
-        <p class="modal-years">Bauzeitraum: {{ engine.years }}</p>
+        <h2 class="modal-title">{{ engine.displayname }}</h2>
+        <p class="modal-years">Bauzeitraum: {{ engine.firstbuildyear }} - {{ engine.lastbuildyear }}</p>
       </div>
       <button class="close-btn" (click)="close.emit()">✕</button>
     </header>

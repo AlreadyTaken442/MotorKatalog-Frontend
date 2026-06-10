@@ -18,22 +18,22 @@ export class EngineModalComponent {
 
   specRows(specs: Engine['specs']): { label: string; value: string }[] {
     const rows: { label: string; value: string }[] = [];
-    if (specs.displacement) rows.push({ label: 'Hubraum', value: `${specs.displacement.toLocaleString('de-DE')} cm³` });
+    if (specs.displacement_ccm) rows.push({ label: 'Hubraum', value: `${specs.displacement_ccm.toLocaleString('de-DE')} cm³` });
     if (specs.cylinders) rows.push({ label: 'Zylinder', value: `${specs.cylinders} (Reihe)` });
     if (specs.valves) rows.push({ label: 'Ventile', value: `${specs.valves} gesamt` });
-    if (specs.bore && specs.stroke) rows.push({ label: 'Bohrung × Hub', value: `${specs.bore} × ${specs.stroke} mm` });
+    if (specs.bore_mm && specs.stroke_mm) rows.push({ label: 'Bohrung × Hub', value: `${specs.bore_mm} × ${specs.stroke_mm} mm` });
     if (specs.compression) rows.push({ label: 'Verdichtung', value: `${specs.compression} : 1` });
-    if (specs.powerKw && specs.powerHp) rows.push({ label: 'Leistung', value: `${specs.powerKw} kW / ${specs.powerHp} PS` });
-    if (specs.peakPowerRpm) rows.push({ label: 'Leistung bei', value: `${specs.peakPowerRpm} U/min` });
-    if (specs.torqueNm) rows.push({ label: 'Drehmoment', value: `${specs.torqueNm} Nm` });
-    if (specs.peakTorqueRpm) rows.push({ label: 'Max. Drehm. bei', value: `${specs.peakTorqueRpm} U/min` });
-    if (specs.redlineRpm) rows.push({ label: 'Drehzahlgrenze', value: `${specs.redlineRpm.toLocaleString('de-DE')} U/min` });
-    if (specs.fuelType) rows.push({ label: 'Kraftstoff', value: specs.fuelType });
-    if (specs.injection) rows.push({ label: 'Einspritzung', value: specs.injection });
-    if (specs.turbo) rows.push({ label: 'Aufladung', value: specs.turbo });
-    if (specs.weight) rows.push({ label: 'Motorgewicht', value: `${specs.weight} kg` });
-    if (specs.oilCapacity) rows.push({ label: 'Ölmenge', value: `${specs.oilCapacity} l` });
-    if (specs.emissionStandard) rows.push({ label: 'Abgasnorm', value: specs.emissionStandard });
+    if (specs.power_kw && specs.horsepower) rows.push({ label: 'Leistung', value: `${specs.power_kw} kW / ${specs.horsepower} PS` });
+    if (specs.powerat_rpm) rows.push({ label: 'Leistung bei', value: `${specs.powerat_rpm} U/min` });
+    if (specs.torque_nm) rows.push({ label: 'Drehmoment', value: `${specs.torque_nm} Nm` });
+    if (specs.torqueat_rpm) rows.push({ label: 'Max. Drehm. bei', value: `${specs.torqueat_rpm} U/min` });
+    if (specs.revlimit_rpm) rows.push({ label: 'Drehzahlgrenze', value: `${specs.revlimit_rpm.toLocaleString('de-DE')} U/min` });
+    if (specs.fueltype) rows.push({ label: 'Kraftstoff', value: specs.fueltype });
+    if (specs.injectionsystem) rows.push({ label: 'Einspritzung', value: specs.injectionsystem });
+    if (specs.aspiration) rows.push({ label: 'Aufladung', value: specs.aspiration });
+    if (specs.engineweight_kg) rows.push({ label: 'Motorgewicht', value: `${specs.engineweight_kg} kg` });
+    if (specs.oilcapacity_l) rows.push({ label: 'Ölmenge', value: `${specs.oilcapacity_l} l` });
+    if (specs.emissionstandard) rows.push({ label: 'Abgasnorm', value: specs.emissionstandard });
     return rows;
   }
 

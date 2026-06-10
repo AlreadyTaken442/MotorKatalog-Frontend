@@ -30,6 +30,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.engineService.getEngines().subscribe(engines => {
+      console.log('Fetched engines:', engines);
       this.allEngines = engines;
       this.applyFilter();
     });
@@ -51,8 +52,8 @@ export class AppComponent implements OnInit {
     this.filteredEngines = this.allEngines
       .filter(e => e.generation === this.activeGeneration)
       .filter(e => !q ||
-        e.code.toLowerCase().includes(q) ||
-        e.name.toLowerCase().includes(q) ||
+        e.enginecode.toLowerCase().includes(q) ||
+        e.displayname.toLowerCase().includes(q) ||
         e.applications.some(a => a.toLowerCase().includes(q)));
   }
 
@@ -63,5 +64,5 @@ export class AppComponent implements OnInit {
     return this.allEngines.filter(e => e.generation === gen).length;
   }
 
-  trackById(_: number, engine: Engine): string { return engine.id; }
+  trackById(_: number, engine: Engine): string { return engine.enginecode; }
 }

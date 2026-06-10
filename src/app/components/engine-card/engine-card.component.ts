@@ -15,5 +15,5 @@ export class EngineCardComponent {
 
   get meta() { return GENERATION_META[this.engine.generation]; }
   get isSport() { return this.engine.generation === 'S'; }
-  get fuelIcon() { return this.engine.specs.fuelType === 'Diesel' ? '⛽' : '🔥'; }
+  get fuelIcon() { return this.engine.specs.fueltype === 'Diesel' ? '⛽' : '🔥'; }
 }

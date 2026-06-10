@@ -1,38 +1,38 @@
 export type EngineGeneration = 'M' | 'N' | 'B' | 'S';
 
 export interface EngineSpec {
-  displacement?: number;       // cm³
+  displacement_ccm?: number;    // cm³
   cylinders?: number;
   valves?: number;
-  bore?: number;               // mm
-  stroke?: number;             // mm
-  compression?: number;        // :1
-  powerKw?: number;            // kW
-  powerHp?: number;            // PS
-  torqueNm?: number;           // Nm
-  redlineRpm?: number;
-  peakPowerRpm?: string;       // range like "5800-7000"
-  peakTorqueRpm?: string;
-  fuelType?: string;
-  injection?: string;
-  turbo?: string;
-  weight?: number;             // kg (engine dry)
-  oilCapacity?: number;        // litres
-  emissionStandard?: string;
+  bore_mm?: number;             // mm
+  stroke_mm?: number;           // mm
+  compression?: number;         // :1
+  power_kw?: number;           // kW
+  horsepower?: number;         // PS
+  torque_nm?: number;          // Nm
+  revlimit_rpm?: number;
+  powerat_rpm?: number;        // single rpm value
+  torqueat_rpm?: number;       // single rpm value
+  fueltype?: string;
+  injectionsystem?: string;
+  aspiration?: string;
+  engineweight_kg?: number;    // kg (engine dry)
+  oilcapacity_l?: number;      // litres
+  emissionstandard?: string;
 }
 
 export interface Engine {
-  id: string;
-  code: string;
+  enginecode: string;     // enginecode (primary key)
+  displayname: string;    // human readable name
   generation: EngineGeneration;
-  name: string;
   family: string;
   variant: string;
-  years: string;
+  firstbuildyear: number;
+  lastbuildyear: number;
   applications: string[];
   specs: EngineSpec;
   description: string;
-  highlights: string[];
+  highlights: string[]; // weitere Tabelle
   imageUrl?: string;
 }
 

@@ -8,25 +8,25 @@
   <div class="card-stripe" [style.background]="isSport ? 'linear-gradient(90deg, #b8922a, #c8a84b)' : meta.color"></div>
 
   <div class="card-header">
-    <span class="engine-code">{{ engine.code }}</span>
+    <span class="engine-code">{{ engine.enginecode }}</span>
     <span class="gen-pill" [class.sport-pill]="isSport">{{ engine.generation }}</span>
   </div>
 
   <div class="card-body">
-    <h3 class="engine-name">{{ engine.name }}</h3>
-    <p class="engine-years">{{ engine.years }}</p>
+    <h3 class="engine-name">{{ engine.displayname }}</h3>
+    <p class="engine-years">{{ engine.firstbuildyear }}–{{ engine.lastbuildyear }}</p>
 
     <div class="spec-grid">
-      <div class="spec-item" *ngIf="engine.specs.powerHp">
-        <span class="spec-value">{{ engine.specs.powerHp }}</span>
+      <div class="spec-item" *ngIf="engine.specs.horsepower">
+        <span class="spec-value">{{ engine.specs.horsepower }}</span>
         <span class="spec-unit">PS</span>
       </div>
-      <div class="spec-item" *ngIf="engine.specs.torqueNm">
-        <span class="spec-value">{{ engine.specs.torqueNm }}</span>
+      <div class="spec-item" *ngIf="engine.specs.torque_nm">
+        <span class="spec-value">{{ engine.specs.torque_nm }}</span>
         <span class="spec-unit">Nm</span>
       </div>
-      <div class="spec-item" *ngIf="engine.specs.displacement">
-        <span class="spec-value">{{ (engine.specs.displacement / 1000).toFixed(1) }}</span>
+      <div class="spec-item" *ngIf="engine.specs.displacement_ccm">
+        <span class="spec-value">{{ (engine.specs.displacement_ccm / 1000).toFixed(1) }}</span>
         <span class="spec-unit">L</span>
       </div>
       <div class="spec-item" *ngIf="engine.specs.cylinders">
@@ -36,9 +36,9 @@
     </div>
 
     <div class="card-tags">
-      <span class="tag fuel-tag">{{ engine.specs.fuelType }}</span>
-      <span class="tag" *ngIf="engine.specs.turbo && engine.specs.turbo !== 'Saugmotor'">Turbo</span>
-      <span class="tag" *ngIf="engine.specs.turbo === 'Saugmotor'">Saugmotor</span>
+      <span class="tag fuel-tag">{{ engine.specs.fueltype }}</span>
+      <span class="tag" *ngIf="engine.specs.aspiration && engine.specs.aspiration !== 'Saugmotor'">Turbo</span>
+      <span class="tag" *ngIf="engine.specs.aspiration === 'Saugmotor'">Saugmotor</span>
     </div>
   </div>
 
